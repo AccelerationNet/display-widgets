@@ -1,40 +1,19 @@
 === Display Widgets ===
-Contributors: sswells
-Donate link: http://strategy11.com/donate/
-Tags: widget, widgets, admin, show, hide, page, sidebar, content, wpmu, wordpress, plugin, post, posts, content, filter, widget logic, widget context
+Contributors: displaywidget, sswells
+Tags: widget, widgets, admin, show, hide, page, sidebar, content, wpmu, plugin, post, posts, content, filter, widget logic, widget context
 Requires at least: 3.1
 Tested up to: 4.3
-Stable tag: 2.03
+Stable tag: 2.05
 
 Simply hide widgets on specified pages. Adds checkboxes to each widget to either show or hide it on every site page.
 
 == Description ==
 
-Change your sidebar content for different pages, categories, custom taxonomies, and WPML languages. Avoid creating multiple sidebars and duplicating widgets by adding check boxes to each widget in the admin (as long as it is written in the WordPress version 2.8 format) which will either show or hide the widgets on every site page. Great for avoiding extra coding and keeping your sidebars clean. 
+Change your sidebar content for different pages, categories, custom taxonomies, and WPML languages. Avoid creating multiple sidebars and duplicating widgets by adding check boxes to each widget in the admin (as long as it is written in the WordPress version 2.8 format) which will either show or hide the widgets on every site page. Great for avoiding extra coding and keeping your sidebars clean.
 
 By default, 'Hide on checked pages' is selected with no boxes checked, so all current widgets will continue to display on all pages. 
 
-You can also find a development version where you can add translations and bug fixes on ([GitHub](https://github.com/Strategy11/display-widgets "GitHub"))
-
-http://strategy11.com/display-widgets/
-
-= Translations =
-* Albanian ([Taulant](http://wporacle.com/ "Taulant"))
-* Arabic
-* Bahasa Malaysian
-* Chinese ([Hanolex](http://hanolex.org "Hanolex"))
-* Dutch
-* Finish
-* French
-* German
-* Hebrew
-* Japanese ([BNG NET](http://staff.blog.bng.net/ "BNG NET"))
-* Polish
-* Romanian
-* Russian
-* Spanish ([Alicia García Holgado](http://grial.usal.es/pfcgrial "Alicia García Holgado"))
-* Swedish
-* Tagalog
+If you'd like to contribute, you can find a development version on ([GitHub](https://github.com/Strategy11/display-widgets "GitHub"))
 
 == Installation ==
 
