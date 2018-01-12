@@ -113,8 +113,8 @@ class DWPlugin{
 			$show = isset( $instance[ 'tax-' . $term->taxonomy ] ) ? $instance[ 'tax-'. $term->taxonomy] : false;
 			unset( $term );
 		} else if ( is_post_type_archive() ) {
-			$type = get_queried_object();
-			$show = isset( $instance[ 'type-' . $type->name . '-archive' ] ) ? $instance[ 'type-' . $type->name . '-archive' ] : false;
+			$type = get_post_type();
+			$show = isset( $instance[ 'type-' . $type . '-archive' ] ) ? $instance[ 'type-' . $type . '-archive' ] : false;
 		} else if ( is_archive() ) {
 			$show = isset( $instance['page-archive'] ) ? $instance['page-archive'] : false;
 		} else if ( is_single() ) {
@@ -128,14 +128,7 @@ class DWPlugin{
 			}
 
 			if ( ! $show ) {
-				$category_taxonomy = array( 'category' );
-				if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) && is_product() ) {
-				    $category_taxonomy[] = 'product_cat';
-				}
-				$cats = get_the_category( array(
-					'taxonomy' => $category_taxonomy,
-				) );
-
+				$cats = get_the_category();
 				foreach ( $cats as $cat ) {
 					if ( $show ) {
 						break;
@@ -171,7 +164,7 @@ class DWPlugin{
 	
 		if ( ! $show && defined( 'ICL_LANGUAGE_CODE' ) ) {
 			// check for WPML widgets
-			$show = isset( $instance[ 'page-' . $post_id ] ) && isset( $instance[ 'lang-' . ICL_LANGUAGE_CODE ] ) ? $instance[ 'lang-' . ICL_LANGUAGE_CODE ] : false;
+			$show = isset( $instance[ 'lang-' . ICL_LANGUAGE_CODE ] ) ? $instance[ 'lang-' . ICL_LANGUAGE_CODE ] : false;
 		}
 
 		if ( ! isset( $show ) ) {
@@ -181,6 +174,9 @@ class DWPlugin{
 		$instance['dw_include'] = isset( $instance['dw_include'] ) ? $instance['dw_include'] : 0;
         
 		if ( ( $instance['dw_include'] && false == $show ) || ( 0 == $instance['dw_include'] && $show ) ) {
+			return false;
+		} else if ( defined('ICL_LANGUAGE_CODE') && $instance['dw_include'] && $show && ! isset( $instance[ 'lang-' . ICL_LANGUAGE_CODE ] ) ) {
+			//if the widget has to be visible here, but the current language has not been checked, return false
 			return false;
 		}
         
@@ -640,13 +636,8 @@ function dw_toggle(){jQuery(this).next('.dw_collapse').toggle();}
 		}
         
 		if ( empty( $this->cats ) ) {
-			$category_taxonomy = array( 'category' );
-			if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
-			    $category_taxonomy[] = 'product_cat';
-			}
 			$this->cats = get_categories( array(
-				'hide_empty' => false,
-				'taxonomy'   => $category_taxonomy,
+				'hide_empty'    => false,
 				//'fields'        => 'id=>name', //added in 3.8
 			) );
 		}
